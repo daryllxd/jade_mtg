@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112223942) do
+ActiveRecord::Schema.define(version: 20151112225845) do
+
+  create_table "binders", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "status",     limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "binders", ["user_id"], name: "fk_rails_fef6301657", using: :btree
 
   create_table "card_sets", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -67,5 +77,6 @@ ActiveRecord::Schema.define(version: 20151112223942) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "binders", "users"
   add_foreign_key "cards", "card_sets"
 end

@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
-  def index
-  end
-
   def show
+    @binders = current_user.binders
   end
 end
