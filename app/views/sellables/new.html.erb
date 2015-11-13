@@ -2,12 +2,14 @@
 <table class="table table-striped">
   <thead>
     <td> Name </td>
+    <td> Color </td>
     <td> Text </td>
   </thead>
   <tbody>
     <% @cards.each do |card| %>
       <tr>
         <td><%= card.name %></td>
+        <td><%= card.icon_class %></td>
         <td><code><%= card.inspect %></code></td>
       </tr>
     <% end %>

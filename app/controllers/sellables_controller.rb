@@ -1,5 +1,5 @@
 class SellablesController < ApplicationController
   def new
-    @cards = Card.all
+    @cards = CardDecorator.decorate_collection(Card.all)
   end
 end
