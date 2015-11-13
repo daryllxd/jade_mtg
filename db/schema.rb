@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112225845) do
+ActiveRecord::Schema.define(version: 20151112233438) do
 
   create_table "binders", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 20151112225845) do
 
   add_index "cards", ["card_set_id"], name: "fk_rails_2b6dc2726c", using: :btree
 
+  create_table "sellables", force: :cascade do |t|
+    t.integer  "binder_id",  limit: 4
+    t.integer  "card_id",    limit: 4
+    t.string   "name",       limit: 255
+    t.integer  "quantity",   limit: 4
+    t.decimal  "price",                  precision: 10
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "sellables", ["binder_id"], name: "fk_rails_7ddda41e89", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -79,4 +91,5 @@ ActiveRecord::Schema.define(version: 20151112225845) do
 
   add_foreign_key "binders", "users"
   add_foreign_key "cards", "card_sets"
+  add_foreign_key "sellables", "binders"
 end
