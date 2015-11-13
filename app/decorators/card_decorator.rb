@@ -27,4 +27,17 @@ class CardDecorator < Draper::Decorator
 
     return html_string.html_safe
   end
+
+  def html_text
+    original_text = "<p>#{object.text}</p>"
+    original_text.sub(/\n/, "</p><p>")
+      .gsub(/{(?<f>[1-9])}/, '<i class="mi mi-mana mi-\k<f>"></i>')
+      .gsub(/{R}/, '<i class="mi mi-r mi-mana"></i>')
+      .gsub(/{W}/, '<i class="mi mi-w mi-mana"></i>')
+      .gsub(/{G}/, '<i class="mi mi-g mi-mana"></i>')
+      .gsub(/{U}/, '<i class="mi mi-u mi-mana"></i>')
+      .gsub(/{B}/, '<i class="mi mi-b mi-mana"></i>')
+      .gsub(/{T}/, '<i class="mi mi-t mi-mana"></i>')
+      .html_safe
+  end
 end
