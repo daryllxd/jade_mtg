@@ -1,3 +1,5 @@
+require 'elasticsearch/model'
+
 # == Schema Information
 #
 # Table name: cards
@@ -27,11 +29,27 @@
 #
 
 class Card < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   serialize :colors, Array
   serialize :subtypes, Array
   serialize :types, Array
 
   belongs_to :card_set
+
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['name^10', 'text', 'type', 'artist']
+          }
+        }
+      }
+    )
+  end
 
   # disable inheritance column since we have a 'type' field
   self.inheritance_column = 'somthing_not_type'
