@@ -373,6 +373,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (~> 0.3.18)
+  nokogiri
   pry
   pry-rails
   quiet_assets

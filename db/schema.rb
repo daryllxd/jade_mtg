@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112233438) do
+ActiveRecord::Schema.define(version: 20151115033046) do
 
   create_table "binders", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -34,27 +34,28 @@ ActiveRecord::Schema.define(version: 20151112233438) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string   "artist",        limit: 255
-    t.integer  "cmc",           limit: 4
-    t.string   "colors",        limit: 255
-    t.text     "flavor",        limit: 65535
-    t.string   "uuid",          limit: 255
-    t.string   "image_name",    limit: 255
-    t.string   "layout",        limit: 255
-    t.string   "mana_cost",     limit: 255
-    t.string   "multiverse_id", limit: 255
-    t.string   "name",          limit: 255
-    t.integer  "number",        limit: 4
-    t.integer  "power",         limit: 4
-    t.integer  "toughness",     limit: 4
-    t.string   "rarity",        limit: 255
-    t.text     "text",          limit: 65535
-    t.string   "subtypes",      limit: 255
-    t.string   "type",          limit: 255
-    t.string   "types",         limit: 255
-    t.integer  "card_set_id",   limit: 4
+    t.string   "artist",         limit: 255
+    t.integer  "cmc",            limit: 4
+    t.string   "colors",         limit: 255
+    t.text     "flavor",         limit: 65535
+    t.string   "uuid",           limit: 255
+    t.string   "image_name",     limit: 255
+    t.string   "layout",         limit: 255
+    t.string   "mana_cost",      limit: 255
+    t.string   "multiverse_id",  limit: 255
+    t.string   "name",           limit: 255
+    t.integer  "number",         limit: 4
+    t.integer  "power",          limit: 4
+    t.integer  "toughness",      limit: 4
+    t.string   "rarity",         limit: 255
+    t.text     "text",           limit: 65535
+    t.string   "subtypes",       limit: 255
+    t.string   "type",           limit: 255
+    t.string   "types",          limit: 255
+    t.integer  "card_set_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "card_image_uri", limit: 255
   end
 
   add_index "cards", ["card_set_id"], name: "fk_rails_2b6dc2726c", using: :btree
